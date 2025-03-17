@@ -1,4 +1,5 @@
 ﻿using App.Repositories.Products;
+using System.Net;
 
 namespace App.Services.Products
 {
@@ -19,16 +20,10 @@ namespace App.Services.Products
 
             if (product is null)
             {
-                return new ServiceResult<Product>
-                {
-                    ErrorMessage = new List<string>() { "Product not found." }
-                };
+                return ServiceResult<Product>.Failure("Product not found.", HttpStatusCode.NotFound);
             }
 
-            return new ServiceResult<Product>
-            {
-                Data = product
-            };
+            return ServiceResult<Product>.Success(product!, HttpStatusCode.OK);
         }
     }
 }
