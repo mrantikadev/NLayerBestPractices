@@ -47,7 +47,7 @@ namespace App.Services.Products
             return ServiceResult<CreateProductResponse>.Success(new CreateProductResponse(product.Id));
         }
 
-        public async Task<ServiceResult> UpdateProductAsync(int id, UpdateProductRequest request)
+        public async Task<ServiceResult> UpdateProductAsync(UpdateProductRequest request)
         {
             var product = await productRepository.GetByIdAsync(request.Id);
 
