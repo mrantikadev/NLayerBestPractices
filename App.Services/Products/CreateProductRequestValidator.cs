@@ -7,7 +7,6 @@ namespace App.Services.Products
         public CreateProductRequestValidator()
         {
             RuleFor(x => x.Name)
-                .NotNull().WithMessage("Name is required.")
                 .NotEmpty().WithMessage("Name is required.")
                 .Length(3, 20).WithMessage("Name must be between 3 and 20 characters.");
 
