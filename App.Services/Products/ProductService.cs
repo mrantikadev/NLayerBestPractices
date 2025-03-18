@@ -57,9 +57,9 @@ namespace App.Services.Products
             return ServiceResult<CreateProductResponse>.Success(new CreateProductResponse(product.Id));
         }
 
-        public async Task<ServiceResult> UpdateAsync(UpdateProductRequest request)
+        public async Task<ServiceResult> UpdateAsync(int id, UpdateProductRequest request)
         {
-            var product = await productRepository.GetByIdAsync(request.Id);
+            var product = await productRepository.GetByIdAsync(id);
 
             if (product is null)
             {
@@ -73,7 +73,7 @@ namespace App.Services.Products
             productRepository.Update(product);
             await unitOfWork.SaveChangesAsync();
 
-            return ServiceResult.Success();
+            return ServiceResult.Success(HttpStatusCode.NoContent);
         }
 
         public async Task<ServiceResult> DeleteAsync(int id)
@@ -88,7 +88,7 @@ namespace App.Services.Products
             productRepository.Delete(product);
             await unitOfWork.SaveChangesAsync();
 
-            return ServiceResult.Success();
+            return ServiceResult.Success(HttpStatusCode.NoContent);
         }
     }
 }

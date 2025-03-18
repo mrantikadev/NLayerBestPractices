@@ -10,5 +10,5 @@ namespace App.Repositories
         ValueTask AddAsync(T entity);
         void Update(T entity);
         void Delete(T entity);
-;    }
+    }
 }
