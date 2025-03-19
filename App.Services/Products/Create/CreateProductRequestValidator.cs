@@ -15,6 +15,9 @@ namespace App.Services.Products.Create
 
             RuleFor(x => x.Stock)
                 .InclusiveBetween(1, 100).WithMessage("Stock must be between 1 and 100.");
+
+            RuleFor(x => x.CategoryId)
+                .GreaterThan(0).WithMessage("Category value must be greater than 0.");
         }
     }
 }
