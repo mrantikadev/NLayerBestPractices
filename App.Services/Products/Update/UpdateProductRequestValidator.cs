@@ -1,9 +1,8 @@
-﻿using App.Services.Products.Create;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace App.Services.Products.Update
 {
-    public class UpdateProductRequestValidator : AbstractValidator<CreateProductRequest>
+    public class UpdateProductRequestValidator : AbstractValidator<UpdateProductRequest>
     {
         public UpdateProductRequestValidator()
         {
