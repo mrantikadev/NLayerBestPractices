@@ -77,12 +77,7 @@ namespace App.Services.Products
                 return ServiceResult<CreateProductResponse>.Failure("Product name already exists.");
             }
 
-            var product = new Product()
-            {
-                Name = request.Name,
-                Price = request.Price,
-                Stock = request.Stock
-            };
+            var product = mapper.Map<Product>(request);
 
             await productRepository.AddAsync(product);
             await unitOfWork.SaveChangesAsync();
@@ -104,9 +99,11 @@ namespace App.Services.Products
             if (isProductNameExists)
                 return ServiceResult.Failure("Product name already exists.");
 
-            product.Name = request.Name;
-            product.Price = request.Price;
-            product.Stock = request.Stock;
+            //product.Name = request.Name;
+            //product.Price = request.Price;
+            //product.Stock = request.Stock;
+
+            product = mapper.Map(request, product);
 
             productRepository.Update(product);
             await unitOfWork.SaveChangesAsync();
