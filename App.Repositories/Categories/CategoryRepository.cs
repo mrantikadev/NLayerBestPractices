@@ -4,7 +4,7 @@ namespace App.Repositories.Categories
 {
     public class CategoryRepository(AppDbContext context) : GenericRepository<Category>(context), ICategoryRepository
     {
-        public IQueryable<Category> GetCategoryByProducts()
+        public IQueryable<Category> GetCategoryWithProducts()
         {
             return context.Categories.Include(c => c.Products).AsQueryable();
         }
